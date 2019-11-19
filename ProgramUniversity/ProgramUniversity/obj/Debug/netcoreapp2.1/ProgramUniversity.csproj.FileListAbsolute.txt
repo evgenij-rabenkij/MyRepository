@@ -1,9 +1,0 @@
-D:\C# Projects\ProgramUniversity\ProgramUniversity\bin\Debug\netcoreapp2.1\ProgramUniversity.deps.json
-D:\C# Projects\ProgramUniversity\ProgramUniversity\bin\Debug\netcoreapp2.1\ProgramUniversity.runtimeconfig.json
-D:\C# Projects\ProgramUniversity\ProgramUniversity\bin\Debug\netcoreapp2.1\ProgramUniversity.runtimeconfig.dev.json
-D:\C# Projects\ProgramUniversity\ProgramUniversity\bin\Debug\netcoreapp2.1\ProgramUniversity.dll
-D:\C# Projects\ProgramUniversity\ProgramUniversity\bin\Debug\netcoreapp2.1\ProgramUniversity.pdb
-D:\C# Projects\ProgramUniversity\ProgramUniversity\obj\Debug\netcoreapp2.1\ProgramUniversity.AssemblyInfoInputs.cache
-D:\C# Projects\ProgramUniversity\ProgramUniversity\obj\Debug\netcoreapp2.1\ProgramUniversity.AssemblyInfo.cs
-D:\C# Projects\ProgramUniversity\ProgramUniversity\obj\Debug\netcoreapp2.1\ProgramUniversity.dll
-D:\C# Projects\ProgramUniversity\ProgramUniversity\obj\Debug\netcoreapp2.1\ProgramUniversity.pdb
