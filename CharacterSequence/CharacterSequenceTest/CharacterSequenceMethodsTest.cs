@@ -48,47 +48,52 @@ namespace CharacterSequenceTest
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_StringWithoutNumbers_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForNumbers_StringWithoutNumbers_ReturnCorrectAnswer()
         {
             int expected = 0;
             string stringWithoutNumbers = "abcz";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(stringWithoutNumbers);
+            Program.SymbolDetermination isNumber = Program.IsNumber;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(stringWithoutNumbers, isNumber);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_LeftBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForNumbers_LeftBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
         {
             int expected = 0;
             string leftBoundaryCondition = "///";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(leftBoundaryCondition);
+            Program.SymbolDetermination isNumber = Program.IsNumber;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(leftBoundaryCondition, isNumber);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_RightBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForNumbers_RightBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
         {
             int expected = 0;
             string rightBoundaryCondition = ":::";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(rightBoundaryCondition);
+            Program.SymbolDetermination isNumber = Program.IsNumber;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(rightBoundaryCondition, isNumber);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_LeftBoundaryCondition_InRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForNumbers_LeftBoundaryCondition_InRange_ReturnCorrectAnswer()
         {
             int expected = 3;
             string leftBoundaryCondition = "000";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(leftBoundaryCondition);
+            Program.SymbolDetermination isNumber = Program.IsNumber;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(leftBoundaryCondition, isNumber);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_RightBoundaryCondition_InRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForNumbers_RightBoundaryCondition_InRange_ReturnCorrectAnswer()
         {
             int expected = 3;
             string rightBoundaryCondition = "999";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(rightBoundaryCondition);
+            Program.SymbolDetermination isNumber = Program.IsNumber;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(rightBoundaryCondition, isNumber);
             Assert.AreEqual(expected, actual);
         }
 
@@ -104,54 +109,60 @@ namespace CharacterSequenceTest
         [DataRow("111a2233", 3)]
         [DataRow("11a22233", 3)]
         [DataRow("11a22333", 3)]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_DifferentCasesOfIdenticalConsecutiveNumberSequences_ReturnCorrectAnswer(string testString, int expected)
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForNumbers_DifferentCasesOfIdenticalConsecutiveNumberSequences_ReturnCorrectAnswer(string testString, int expected)
         {
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
+            Program.SymbolDetermination isNumber = Program.IsNumber;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(testString, isNumber);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_StringWithoutLatinSymbols_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForLatinSymbols_StringWithoutLatinSymbols_ReturnCorrectAnswer()
         {
             int expected = 0;
-            string stringWithoutLatinSymbols = "1233";//case of string without latin symbols
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(stringWithoutLatinSymbols);
+            string stringWithoutLatinSymbols = "1233";
+            Program.SymbolDetermination isLatin = Program.IsLatin;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(stringWithoutLatinSymbols, isLatin);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_LeftBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForLatinSymbols_LeftBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
         {
             int expected = 0;
             string leftBoundaryCondition = "```";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(leftBoundaryCondition);
+            Program.SymbolDetermination isLatin = Program.IsLatin;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(leftBoundaryCondition, isLatin);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_RightBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForLatinSymbols_RightBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
         {
             int expected = 0;
             string rightBoundaryCondition = "{{{";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(rightBoundaryCondition);
+            Program.SymbolDetermination isLatin = Program.IsLatin;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(rightBoundaryCondition, isLatin);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_LeftBoundaryCondition_InRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForLatinSymbols_LeftBoundaryCondition_InRange_ReturnCorrectAnswer()
         {
             int expected = 3;
             string leftBoundaryCondition = "aaa";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(leftBoundaryCondition);
+            Program.SymbolDetermination isLatin = Program.IsLatin;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(leftBoundaryCondition, isLatin);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_RightBoundaryCondition_InRange_ReturnCorrectAnswer()
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForLatinSymbols_RightBoundaryCondition_InRange_ReturnCorrectAnswer()
         {
             int expected = 3;
             string rightBoundaryCondition = "zzz";
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(rightBoundaryCondition);
+            Program.SymbolDetermination isLatin = Program.IsLatin;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(rightBoundaryCondition, isLatin);
             Assert.AreEqual(expected, actual);
         }
 
@@ -167,9 +178,10 @@ namespace CharacterSequenceTest
         [DataRow("vvv2ddff", 3)]
         [DataRow("vv3gggww", 3)]
         [DataRow("vv3gg3www", 3)]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_DifferentCasesOfIdenticalConsecutiveLatinSymbolSequences_ReturnCorrectAnswer(string testString, int expected)
+        public void GetMaxNumberOfIdenticalConsecutiveSymbols_ForLatinSymbols_DifferentCasesOfIdenticalConsecutiveLatinSymbolSequences_ReturnCorrectAnswer(string testString, int expected)
         {
-            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
+            Program.SymbolDetermination isLatin = Program.IsLatin;
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveSymbols(testString, isLatin);
             Assert.AreEqual(expected, actual);
         }
     }
