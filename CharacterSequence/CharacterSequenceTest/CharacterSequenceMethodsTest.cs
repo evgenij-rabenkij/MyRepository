@@ -7,212 +7,169 @@ namespace CharacterSequenceTest
     public class CharacterSequenceMethodsTest
     {
         [TestMethod]
-        public void GetMaxNumberOfNonidenticalConsecutiveCharacters_Test()//test for method GetMaxNumberOfNonidenticalConsecutiveCharacters
-        {   
+        public void GetMaxNumberOfNonidenticalConsecutiveCharacters_OneSymbol_ReturnCorrectAnswer()
+        {
             int expected = 1;
+            string oneSymbolString = "a";
+            int actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(oneSymbolString);
+            Assert.AreEqual(expected, actual);
+        }
 
-            string testString = "a";//case of one symbol
+        [TestMethod]
+        public void GetMaxNumberOfNonidenticalConsecutiveCharacters_TwoSameSymbols_ReturnCorrectAnswer()
+        {
+            int expected = 1;
+            string twoSameSymbolsString = "aa";
+            int actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(twoSameSymbolsString);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetMaxNumberOfNonidenticalConsecutiveCharacters_TwoDifferentSymbols_ReturnCorrectAnswer()
+        {
+            int expected = 2;
+            string twoDifferentSymbolsString = "ab";//case of two different symbol
+            int actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(twoDifferentSymbolsString);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DataRow("abb", 2)]
+        [DataRow("aab", 2)]
+        [DataRow("aabb", 2)]
+        [DataRow("abbccd", 2)]
+        [DataRow("aqbbccd", 3)]
+        [DataRow("abbqccd", 3)]
+        [DataRow("aqbbccqd", 3)]
+        public void GetMaxNumberOfNonidenticalConsecutiveCharacters_DifferentCasesOfSymbolsSequences_ReturnCorrectAnswer(string testString, int expected)
+        {
             int actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
             Assert.AreEqual(expected, actual);
+        }
 
-            testString = "aa";//case of two same symbol
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 2;
-
-            testString = "ab";//case of two different symbol
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "abb";//case of sequence of nonidentical consecutive characters in the beggining of string
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "aab";//case of sequence of nonidentical consecutive characters in the end of string
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "aabb";//case of sequence of nonidentical consecutive characters in the middle of string
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "abbccd";//case of three sequences of nonidentical consecutive characters with same length
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 3;
-
-            testString = "aqbbccd";//case of three sequences of nonidentical consecutive characters, where the longest one located in the beggining of string
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "abbqccd";//case of three sequences of nonidentical consecutive characters, where the longest one located in the middle of string
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "aqbbccqd";//case of three sequences of nonidentical consecutive characters, where the longest one located in the end of string
-            actual = Program.GetMaxNumberOfNonidenticalConsecutiveCharacters(testString);
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveNumbers_StringWithoutNumbers_ReturnCorrectAnswer()
+        {
+            int expected = 0;
+            string stringWithoutNumbers = "abcz";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(stringWithoutNumbers);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveNumbers_Test()
+        public void GetMaxNumberOfIdenticalConsecutiveNumbers_LeftBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
         {
             int expected = 0;
+            string leftBoundaryCondition = "///";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(leftBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
 
-            string testString = "abcz";//case of string without numbers
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveNumbers_RightBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
+        {
+            int expected = 0;
+            string rightBoundaryCondition = ":::";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(rightBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveNumbers_LeftBoundaryCondition_InRange_ReturnCorrectAnswer()
+        {
+            int expected = 3;
+            string leftBoundaryCondition = "000";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(leftBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveNumbers_RightBoundaryCondition_InRange_ReturnCorrectAnswer()
+        {
+            int expected = 3;
+            string rightBoundaryCondition = "999";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(rightBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DataRow("1", 1)]
+        [DataRow("a12b", 1)]
+        [DataRow("11", 2)]
+        [DataRow("11a", 2)]
+        [DataRow("a11", 2)]
+        [DataRow("a112", 2)]
+        [DataRow("11a22b33", 2)]
+        [DataRow("1", 1)]
+        [DataRow("111a2233", 3)]
+        [DataRow("11a22233", 3)]
+        [DataRow("11a22333", 3)]
+        public void GetMaxNumberOfIdenticalConsecutiveNumbers_DifferentCasesOfIdenticalConsecutiveNumberSequences_ReturnCorrectAnswer(string testString, int expected)
+        {
             int actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
             Assert.AreEqual(expected, actual);
+        }
 
-            testString = "b";//case of string with one not numeric symbol 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "///";//case of left boundary condition (out of range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = ":::";//case of right boundary condition (out of range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 1;
-
-            testString = "1";//case for string with one numeric symbol 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "12";//case for string with two different numeric symbol s
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "a12b";//case for string with numeric and not numeric symbol 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 2;
-
-            testString = "11";//case for string with two same numeric symbols 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "11a";//case for string with two same numeric symbols in the begininng of string  
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "a11";//case for string with two same numeric symbols in the end of string  
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "a112";//case for string with two same numeric symbols in the middle of string  
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "11a22b33";//case of three sequences of nidentical consecutive numeric characters with same length 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 3;
-
-            testString = "111a2233";//case of three sequences of nidentical consecutive numeric characters, where the longest placed in the beginning if string
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "11a22233";//case of three sequences of identical consecutive numeric characters, where the longest placed in the middle if string
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "11a22333";//case of three sequences of identical consecutive numeric characters, where the longest placed in the end if string
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "000";//case of left boundary condition (in range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "999";//case of right boundary condition (in range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveNumbers(testString);
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_StringWithoutLatinSymbols_ReturnCorrectAnswer()
+        {
+            int expected = 0;
+            string stringWithoutLatinSymbols = "1233";//case of string without latin symbols
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(stringWithoutLatinSymbols);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_Test()
+        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_LeftBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
         {
             int expected = 0;
+            string leftBoundaryCondition = "```";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(leftBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
 
-            string testString = "1233";//case of string without latin symbols
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_RightBoundaryCondition_OutOfRange_ReturnCorrectAnswer()
+        {
+            int expected = 0;
+            string rightBoundaryCondition = "{{{";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(rightBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_LeftBoundaryCondition_InRange_ReturnCorrectAnswer()
+        {
+            int expected = 3;
+            string leftBoundaryCondition = "aaa";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(leftBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_RightBoundaryCondition_InRange_ReturnCorrectAnswer()
+        {
+            int expected = 3;
+            string rightBoundaryCondition = "zzz";
+            int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(rightBoundaryCondition);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DataRow("c", 1)]
+        [DataRow("bc", 1)]
+        [DataRow("a12b", 1)]
+        [DataRow("cc", 2)]
+        [DataRow("cca", 2)]
+        [DataRow("1bb", 2)]
+        [DataRow("add2", 2)]
+        [DataRow("dd2aa3cc", 2)]
+        [DataRow("vvv2ddff", 3)]
+        [DataRow("vv3gggww", 3)]
+        [DataRow("vv3gg3www", 3)]
+        public void GetMaxNumberOfIdenticalConsecutiveLatinCharacters_DifferentCasesOfIdenticalConsecutiveLatinSymbolSequences_ReturnCorrectAnswer(string testString, int expected)
+        {
             int actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "1";//case of string with one not latin symbol 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "```";//case of left boundary condition (out of range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "{{{";//case of right boundary condition (out of range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 1;
-
-            testString = "c";//case for string with one latin symbol 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "bc";//case for string with two different latin symbols
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "a12b";//case for string with latin and not latin symbols 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 2;
-
-            testString = "cc";//case for string with two same latin symbols 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "cca";//case for string with two same latin symbols in the begininng of string  
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "1bb";//case for string with two same latin symbols in the end of string  
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "add2";//case for string with two same latin symbols in the middle of string  
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "dd2aa3cc";//case of three sequences of identical consecutive latin symbols with same length 
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            expected = 3;
-
-            testString = "vvv2ddff";//case of three sequences of identical consecutive latin symbols, where the longest placed in the beginning if string
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "vv3gggww";//case of three sequences of identical consecutive latin symbols, where the longest placed in the middle if string
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "vv3gg3www";//case of three sequences of identical consecutive latin symbols, where the longest placed in the end if string
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "aaa";//case of left boundary condition (in range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
-            Assert.AreEqual(expected, actual);
-
-            testString = "zzz";//case of right boundary condition (in range)
-            actual = Program.GetMaxNumberOfIdenticalConsecutiveLatinCharacters(testString);
             Assert.AreEqual(expected, actual);
         }
     }
