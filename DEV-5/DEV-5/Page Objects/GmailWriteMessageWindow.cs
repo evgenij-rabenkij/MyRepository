@@ -8,14 +8,14 @@ using System.Collections.Generic;
 
 namespace DEV_5
 {
-    class GmailAccountPageWithWriteMessageWindow : GmailAccountPage
+    class GmailWriteMessageWindow : PageObject
     {
         public IWebElement AddressOfRecipientInputField { get; }
         public IWebElement TextOfMessageInputField { get; }
 
         public IWebElement MessageSendButton { get; }
 
-        public GmailAccountPageWithWriteMessageWindow(IWebDriver driver) : base(driver)
+        public GmailWriteMessageWindow(IWebDriver driver) : base(driver)
         {
             AddressOfRecipientInputField = new WebDriverWait(driver, TimeSpan.FromSeconds(15)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Name("to")));
             TextOfMessageInputField = new WebDriverWait(driver, TimeSpan.FromSeconds(15)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@role='textbox']")));

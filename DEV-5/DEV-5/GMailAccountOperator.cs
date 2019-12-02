@@ -40,10 +40,22 @@ namespace DEV_5
             GmailAccountPage gmailAccountPage = new GmailAccountPage(driver);
             gmailAccountPage.WriteMessageButton.Click();
 
-            GmailAccountPageWithWriteMessageWindow gmailAccountPageWithWriteMessageWindow = new GmailAccountPageWithWriteMessageWindow(driver);
-            gmailAccountPageWithWriteMessageWindow.AddressOfRecipientInputField.SendKeys(mailruFullLogin);
-            gmailAccountPageWithWriteMessageWindow.TextOfMessageInputField.SendKeys(textOfMessege);
-            gmailAccountPageWithWriteMessageWindow.MessageSendButton.Click();
+            GmailWriteMessageWindow gmailWriteMessageWindow = new GmailWriteMessageWindow(driver);
+            gmailWriteMessageWindow.AddressOfRecipientInputField.SendKeys(mailruFullLogin);
+            gmailWriteMessageWindow.TextOfMessageInputField.SendKeys(textOfMessege);
+            gmailWriteMessageWindow.MessageSendButton.Click();
+            return true;
+        }
+
+        public bool ReadReplyFromMailRu(IWebDriver driver)
+        {
+            GmailAccountPage gmailAccountPage = new GmailAccountPage(driver);
+            gmailAccountPage.FindLastUnreadMessageBar(driver);
+            gmailAccountPage.LastUnreadMessageBar.Click();
+
+            GmailMessageReply gmailMessageReply = new GmailMessageReply(driver);
+
+            Console.WriteLine("Reply received.\n"+gmailMessageReply.ReplyTextContainer.Text);
             return true;
         }
     }

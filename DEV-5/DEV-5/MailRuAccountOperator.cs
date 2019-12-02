@@ -32,20 +32,20 @@ namespace DEV_5
 
         public bool MailRuReplyGmail(IWebDriver driver, string textOfReply)
         {
-            
             MailRuAccountPage mailRuAccoutPage = new MailRuAccountPage(driver);
           
             mailRuAccoutPage.LastUnreadMessageBar.Click();
 
-            MessagePage messagePage = new MessagePage(driver);
+            LastUnredMessageMailRuPage lastUnredMessageMailRuPage = new LastUnredMessageMailRuPage(driver);
 
-            messagePage.ReplyButton.Click();
+            lastUnredMessageMailRuPage.ReplyButton.Click();
 
-            MessagePageWithWriteMessageWindow messagePageWithWriteMessageWindow = new MessagePageWithWriteMessageWindow(driver);
+            MailRuReplyingMessageWindow mailRuReplyingMessageWindow = new MailRuReplyingMessageWindow(driver);
 
-            messagePageWithWriteMessageWindow.MessageTextInputField.SendKeys(messagePageWithWriteMessageWindow.MessegeTextSpace.Text + "Received");
+            mailRuReplyingMessageWindow.MessageTextInputField.SendKeys(lastUnredMessageMailRuPage.MessegeTextSpace.Text + " Received");
 
-            messagePageWithWriteMessageWindow.SendMessageButton.Click();
+            mailRuReplyingMessageWindow.SendMessageButton.Click();
+            
             return true;
         }
 

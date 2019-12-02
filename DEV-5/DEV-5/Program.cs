@@ -1,16 +1,4 @@
-﻿
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using OpenQA.Selenium.Support.UI;
-using System.Collections.Generic;
-
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using System.Xml.XPath;
-
+﻿using OpenQA.Selenium;
 
 namespace DEV_5
 {
@@ -18,7 +6,7 @@ namespace DEV_5
     {
         static void Main(string[] args)
         {
-            string textOfMessege = "Last";
+            string textOfMessege = "Unique number: 5809.";
             string textOfReply = "The message is received.";
             
             string gmailLogin = "webdrivermailg";
@@ -29,11 +17,11 @@ namespace DEV_5
             string loginMailRu = "webdrivermail";
             string passwordMailRu = "34gadf35";
 
-            //GMailAccountOperator gmailAccountOperator = new GMailAccountOperator();
+            GMailAccountOperator gmailAccountOperator = new GMailAccountOperator();
 
-            //IWebDriver driverGmail = gmailAccountOperator.LoginToGmailAccount(gmailLogin, gmailPassword);
+            IWebDriver driverGmail = gmailAccountOperator.LoginToGmailAccount(gmailLogin, gmailPassword);
 
-            //gmailAccountOperator.SendFromGmailToMailRuMessage(driverGmail, mailruFullLogin, textOfMessege);
+            gmailAccountOperator.SendFromGmailToMailRuMessage(driverGmail, mailruFullLogin, textOfMessege);
 
 
             MailRuAccountOperator mailRuAccountOperator = new MailRuAccountOperator();
@@ -42,7 +30,11 @@ namespace DEV_5
 
             mailRuAccountOperator.MailRuReplyGmail(driverMailRu, textOfReply);
 
+            driverMailRu.Quit();
 
+            gmailAccountOperator.ReadReplyFromMailRu(driverGmail);
+
+            driverGmail.Quit();
         }
     }
 }

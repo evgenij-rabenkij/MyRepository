@@ -9,7 +9,6 @@ namespace DEV_5
 {
     class GmailMainPage : PageObject
     {
-        protected IWebDriver driver;
         public IWebElement SignInButton { get; }
 
         public GmailMainPage(IWebDriver driver) :base(driver)

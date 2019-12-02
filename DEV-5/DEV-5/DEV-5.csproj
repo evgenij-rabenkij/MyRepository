@@ -55,12 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Page Objects\MessagePageWithWriteMessageWindow.cs" />
-    <Compile Include="Page Objects\MessagePage.cs" />
+    <Compile Include="Page Objects\GmailMessageReply.cs" />
+    <Compile Include="Page Objects\MailRuReplyingMessageWindow.cs" />
+    <Compile Include="Page Objects\LastUnredMessageMailRuPage.cs" />
     <Compile Include="Page Objects\MailRuAccountPage.cs" />
     <Compile Include="MailRuAccountOperator.cs" />
     <Compile Include="Page Objects\MailRuMainPage.cs" />
-    <Compile Include="Page Objects\GmailAccountPageWithWriteMessageWindow.cs" />
+    <Compile Include="Page Objects\GmailWriteMessageWindow.cs" />
     <Compile Include="Page Objects\GmailAccountPage.cs" />
     <Compile Include="GMailAccountOperator.cs" />
     <Compile Include="Page Objects\PasswordGmailPage.cs" />
