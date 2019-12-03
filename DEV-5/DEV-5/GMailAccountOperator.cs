@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System;
-using OpenQA.Selenium.Support.UI;
+using System.Threading;
 using System.Collections.Generic;
 
 namespace DEV_5
@@ -49,13 +49,16 @@ namespace DEV_5
 
         public bool ReadReplyFromMailRu(IWebDriver driver)
         {
+            Thread.Sleep(10000);
+            driver.Navigate().Refresh();
             GmailAccountPage gmailAccountPage = new GmailAccountPage(driver);
             gmailAccountPage.FindLastUnreadMessageBar(driver);
             gmailAccountPage.LastUnreadMessageBar.Click();
 
             GmailMessageReply gmailMessageReply = new GmailMessageReply(driver);
 
-            Console.WriteLine("Reply received.\n"+gmailMessageReply.ReplyTextContainer.Text);
+            Console.WriteLine("Reply received. Text of reply:\n"+gmailMessageReply.ReplyTextContainer.Text);
+
             return true;
         }
     }

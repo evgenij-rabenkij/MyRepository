@@ -11,7 +11,7 @@ namespace DEV_5
 
         public GmailMessageReply(IWebDriver driver): base(driver)
         {
-            ReplyTextContainer = new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//dib[@id=':7x']")));
+            ReplyTextContainer = new WebDriverWait(driver, TimeSpan.FromSeconds(8)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='yj6qo']/preceding-sibling::div[1]")));
 
         }
     }

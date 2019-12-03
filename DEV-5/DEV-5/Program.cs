@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace DEV_5
 {
@@ -6,8 +7,8 @@ namespace DEV_5
     {
         static void Main(string[] args)
         {
-            string textOfMessege = "Unique number: 5809.";
-            string textOfReply = "The message is received.";
+            Console.WriteLine("Input text of message: ");
+            string textOfMessege = Console.ReadLine();
             
             string gmailLogin = "webdrivermailg";
             string gmailPassword = "34gadf35";
@@ -28,7 +29,7 @@ namespace DEV_5
 
             IWebDriver driverMailRu = mailRuAccountOperator.LoginToMailRuAccount(loginMailRu, passwordMailRu);
 
-            mailRuAccountOperator.MailRuReplyGmail(driverMailRu, textOfReply);
+            mailRuAccountOperator.MailRuReplyGmail(driverMailRu);
 
             driverMailRu.Quit();
 

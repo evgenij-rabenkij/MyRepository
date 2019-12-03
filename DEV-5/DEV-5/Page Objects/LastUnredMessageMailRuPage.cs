@@ -16,7 +16,6 @@ namespace DEV_5
         {
                 
             MessegeTextSpace = new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@dir='ltr']")));
-            Console.WriteLine("Mes:  "+ MessegeTextSpace.Text);
             ReplyButton = new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='button2 button2_has-ico button2_reply button2_clean button2_hover-support js-shortcut']")));
         }
     }

@@ -30,7 +30,7 @@ namespace DEV_5
             return chromeDriver;
         }
 
-        public bool MailRuReplyGmail(IWebDriver driver, string textOfReply)
+        public bool MailRuReplyGmail(IWebDriver driver)
         {
             MailRuAccountPage mailRuAccoutPage = new MailRuAccountPage(driver);
           
@@ -42,7 +42,7 @@ namespace DEV_5
 
             MailRuReplyingMessageWindow mailRuReplyingMessageWindow = new MailRuReplyingMessageWindow(driver);
 
-            mailRuReplyingMessageWindow.MessageTextInputField.SendKeys(lastUnredMessageMailRuPage.MessegeTextSpace.Text + " Received");
+            mailRuReplyingMessageWindow.ReplyMessageTextInputField.SendKeys(lastUnredMessageMailRuPage.MessegeTextSpace.Text + " Received");
 
             mailRuReplyingMessageWindow.SendMessageButton.Click();
             
