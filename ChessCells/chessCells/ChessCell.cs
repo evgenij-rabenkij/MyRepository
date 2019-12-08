@@ -3,18 +3,18 @@ namespace ChessCells
 {
     class ChessCell
     {
-        public char File { get; }
-        public int Rank { get; }
+        public char Column { get; }
+        public int Row { get; }
 
         public ChessCell(string cell)
         {
-            File = cell[0];
-            Rank = (int)char.GetNumericValue(cell[1]);
+            Column = cell[0];
+            Row = (int)char.GetNumericValue(cell[1]);
         }
 
         public string GetColor()//method, which get cell and return its color
         {
-            if ((File + 1 - 'a') % 2 == Rank % 2)
+            if ((Column + 1 - 'a') % 2 == Row % 2)
             {
                 return "Black";
             }
@@ -26,12 +26,12 @@ namespace ChessCells
 
         public override bool Equals(object obj)
         {
-            return File == (obj as ChessCell).File && Rank == (obj as ChessCell).Rank;
+            return Column == (obj as ChessCell).Column && Row == (obj as ChessCell).Row;
         }
 
         public override string ToString()
         {
-            return $"{File}{Rank}";
+            return $"{Column}{Row}";
         }
     }
 }
