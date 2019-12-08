@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace DEV_5
 {
-    class GMailAccountOperator
+    class GMailAccountOperator////class with methods for work in gmail account
     {
         const string gmailMainPageURL = "https://www.google.com/intl/ru/gmail/about/#";
 
@@ -14,7 +14,7 @@ namespace DEV_5
         { 
         }
 
-        public IWebDriver LoginToGmailAccount(string gmailLogin, string gmailPassword)
+        public IWebDriver LoginToGmailAccount(string gmailLogin, string gmailPassword)//method fot login in gmail account
         {
             IWebDriver chromeDriver = new ChromeDriver();
             chromeDriver.Manage().Window.Maximize();
@@ -35,7 +35,7 @@ namespace DEV_5
             return chromeDriver;
         }
 
-        public bool SendFromGmailToMailRuMessage(IWebDriver driver, string mailruFullLogin, string textOfMessege)
+        public bool SendFromGmailToMailRuMessage(IWebDriver driver, string mailruFullLogin, string textOfMessege)//method for send a message from gmail account
         {
             GmailAccountPage gmailAccountPage = new GmailAccountPage(driver);
             gmailAccountPage.WriteMessageButton.Click();
@@ -47,7 +47,7 @@ namespace DEV_5
             return true;
         }
 
-        public bool ReadReplyFromMailRu(IWebDriver driver)
+        public bool ReadReplyFromMailRu(IWebDriver driver)//method for reading a reply
         {
             Thread.Sleep(10000);
             driver.Navigate().Refresh();
