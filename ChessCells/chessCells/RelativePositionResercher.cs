@@ -2,7 +2,7 @@
 
 namespace ChessCells
 {
-    class RelativePositionResercher
+    class RelativePositionResercher//class, which contains method with realization of determination of relative position of two cells
     {
         public RelativePositionResercher()
         { 
@@ -14,15 +14,15 @@ namespace ChessCells
             {
                 return $"{cell1} and {cell2} is the same cell.";
             }
-            if (cell1.File ==cell2.File)
+            if (cell1.Column == cell2.Column)
             {
-                return $"{cell1} and {cell2} lies in one file.";
+                return $"{cell1} and {cell2} lies in one column.";
             }
-            if (cell1.Rank == cell2.Rank)
+            if (cell1.Row == cell2.Row)
             {
-                return $"{cell1} and {cell2} lies in one rank.";
+                return $"{cell1} and {cell2} lies in one row.";
             }
-            if (Math.Abs(cell1.File - cell2.File) == Math.Abs(cell1.Rank - cell2.Rank))
+            if (Math.Abs(cell1.Column - cell2.Column) == Math.Abs(cell1.Row - cell2.Row))
             {
                 return $"{cell1} and {cell2} lies in one diagonal.";
             }
