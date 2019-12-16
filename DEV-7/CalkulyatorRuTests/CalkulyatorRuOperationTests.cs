@@ -1,13 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System.Threading;
-using OpenQA.Selenium.Chrome;
-using DEV_7;
 
 namespace CalkulyatorRuTests
 {
@@ -208,11 +199,5 @@ namespace CalkulyatorRuTests
             string actual = TestInvoker.GetResult(buttonSequence);
             Assert.AreEqual(expected, actual);
         }
-
-
-
-
-
-
     }
 }

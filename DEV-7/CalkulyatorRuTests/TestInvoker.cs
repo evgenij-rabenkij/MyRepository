@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Threading;
 using DEV_7;
 
 namespace CalkulyatorRuTests
@@ -96,20 +95,5 @@ namespace CalkulyatorRuTests
 
             return webElementsNameSequence;
         }
-
-        //public static string GetResultThread(string buttonSequence)
-        //{
-        //    List<string> webElementsNameSequence = ParseStringToButtonName(buttonSequence);
-
-        //    foreach (string buttonName in webElementsNameSequence)
-        //    {
-        //        Thread.Sleep(2000);
-        //        calkulyatorRuPage.WebElements[buttonName].Click();
-        //    }
-
-        //    string result = calkulyatorRuPage.WebElements["Display"].Text;
-        //    calkulyatorRuPage.WebElements["AC"].Click();
-        //    return result.Replace(" ", "");
-        //}
     }
 }
