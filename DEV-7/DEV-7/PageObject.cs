@@ -4,7 +4,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace DEV_7
 {
-    public class PageObject
+    public class PageObject//basic class for PageObjects
     {
         protected IWebDriver driver;
 

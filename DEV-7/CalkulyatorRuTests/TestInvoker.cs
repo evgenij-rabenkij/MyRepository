@@ -6,7 +6,7 @@ using DEV_7;
 
 namespace CalkulyatorRuTests
 {
-    static class TestInvoker
+    static class TestInvoker//class containing the implementation of interaction with the site for unit tests
     {
         const string urlCalkulyatorRu = "http://calkulyator.ru/";
         static IWebDriver webDriver = new ChromeDriver();
@@ -18,7 +18,7 @@ namespace CalkulyatorRuTests
             calkulyatorRuPage = new CalkulyatorRuPage(webDriver);
         }
 
-        public static string GetResult(string buttonSequence)
+        public static string GetResult(string buttonSequence)//method for interaction with buttons, which names contains in input string, returns desplaying result
         {
             List<string> webElementsNameSequence = ParseStringToButtonName(buttonSequence);
 
@@ -37,12 +37,10 @@ namespace CalkulyatorRuTests
             }
 
             string result = calkulyatorRuPage.WebElements["Display"].Text;
-            if (calkulyatorRuPage.WebElements["AC"].)
+            
             calkulyatorRuPage.WebElements["AC"].Click();
             return result.Replace(" ", "");
         }
-
-       
 
         static List<string> ParseStringToButtonName(string buttonSequence)
         {
@@ -99,19 +97,19 @@ namespace CalkulyatorRuTests
             return webElementsNameSequence;
         }
 
-        public static string GetResultThread(string buttonSequence)
-        {
-            List<string> webElementsNameSequence = ParseStringToButtonName(buttonSequence);
+        //public static string GetResultThread(string buttonSequence)
+        //{
+        //    List<string> webElementsNameSequence = ParseStringToButtonName(buttonSequence);
 
-            foreach (string buttonName in webElementsNameSequence)
-            {
-                Thread.Sleep(2000);
-                calkulyatorRuPage.WebElements[buttonName].Click();
-            }
+        //    foreach (string buttonName in webElementsNameSequence)
+        //    {
+        //        Thread.Sleep(2000);
+        //        calkulyatorRuPage.WebElements[buttonName].Click();
+        //    }
 
-            string result = calkulyatorRuPage.WebElements["Display"].Text;
-            calkulyatorRuPage.WebElements["AC"].Click();
-            return result.Replace(" ", "");
-        }
+        //    string result = calkulyatorRuPage.WebElements["Display"].Text;
+        //    calkulyatorRuPage.WebElements["AC"].Click();
+        //    return result.Replace(" ", "");
+        //}
     }
 }

@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace DEV_7
 {
-    public class CalkulyatorRuPage : PageObject
+    public class CalkulyatorRuPage : PageObject//class, which represents page of calkulyator.ru 
     {
         public Dictionary<string, IWebElement> WebElements { get; set; } = new Dictionary<string, IWebElement>();
 
